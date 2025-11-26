@@ -7,10 +7,9 @@ import productsRouter from "./src/routes/products.routes.js";
 import authRouter from "./src/routes/auth.routes.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(cors());               
-app.use(bodyParser.json());    
+app.use(cors());
+app.use(bodyParser.json());
 
 app.use("/auth", authRouter);
 app.use("/products", productsRouter);
@@ -18,7 +17,6 @@ app.use("/products", productsRouter);
 app.get("/", (req, res) => {
   res.send("API REST Proyecto Final funcionando 🚀");
 });
-
 
 app.use((req, res, next) => {
   res.status(404).json({ error: "Ruta no encontrada" });
@@ -33,3 +31,4 @@ app.use((err, req, res, next) => {
   res.status(statusCode).json({ error: message });
 });
 
+export default app;
