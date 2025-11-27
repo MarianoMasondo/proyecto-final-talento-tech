@@ -1,4 +1,5 @@
 import app from "../index.js";
-import serverless from "serverless-http";
 
-export default serverless(app);
+export default function handler(req, res) {
+  return app(req, res);
+}
